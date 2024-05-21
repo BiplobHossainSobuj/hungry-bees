@@ -5,13 +5,17 @@ import img from '../../assets/others/authentication2.png'
 import { useForm } from "react-hook-form";
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser,updateUserProfile} = useContext(AuthContext);
     const {register, handleSubmit,formState: { errors },} = useForm();
     const onSubmit = (data) => {
         createUser(data.email,data.password)
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
+            updateUserProfile(data.name)
+            .then(()=>{
+                console.log("updated userName")
+            })
         })
     };
     

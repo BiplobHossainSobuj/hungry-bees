@@ -9,6 +9,8 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 
  export const router = createBrowserRouter([
     {
@@ -35,6 +37,10 @@ import Register from "../pages/Register/Register";
         {
           path: "/register",
           element: <Register></Register>,
+        },
+        {
+          path: "/dashboard",
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         },
       ],
     },
