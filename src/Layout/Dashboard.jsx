@@ -13,7 +13,7 @@ const Dashboard = () => {
                     <li><NavLink to="/dashboard/reservation"><FaCalendar></FaCalendar> Reservation</NavLink></li>
                     <li><NavLink to="/dashboard/bookings"><FaList></FaList> My Booking</NavLink></li>
                     <div className='divider'></div>
-                    <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
+                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
                 </ul>
             </div>
             <div className='flex-1'>
