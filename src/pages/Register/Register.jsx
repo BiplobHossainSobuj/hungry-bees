@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import img from '../../assets/others/authentication2.png'
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
     const {createUser,updateUserProfile} = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const {register, handleSubmit,formState: { errors },} = useForm();
     const onSubmit = (data) => {
         createUser(data.email,data.password)
@@ -14,6 +17,8 @@ const Register = () => {
             console.log(loggedUser);
             updateUserProfile(data.name)
             .then(()=>{
+                const userInfo = {name:data.name,email:data.email}
+                axiosPublic.post('/users',userInfo)
                 console.log("updated userName")
             })
         })
@@ -51,12 +56,14 @@ const Register = () => {
                             {errors.password?.type==="minLength" && <p className="text-red-600">Password must be 6 chartecters</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <button className='btn btn-primary'>Login</button>
+                            <button className='btn btn-primary'>Sign Up</button>
                         </div>
                         <div className="form-control mt-6">
                             <p>Already Have Account?<Link to='/login'>Login</Link></p>
                         </div>
                     </form>
+
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
+import Allusers from "../pages/Dashboard/AllUsers/Allusers";
 
  export const router = createBrowserRouter([
     {
@@ -43,12 +44,16 @@ import Cart from "../pages/Dashboard/Cart/Cart";
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       errorElement: <ErrorPage />,
       children: [
         {
           path: "cart",
           element: <Cart></Cart>,
+        },
+        {
+          path: "allUsers",
+          element: <Allusers></Allusers>,
         },
       ],
     },
