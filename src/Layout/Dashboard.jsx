@@ -1,15 +1,16 @@
 import React from 'react';
 import { FaCalendar, FaEnvelope, FaHome, FaList, FaShoppingCart, FaUsers, FaUtensils } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
-    const admin = true;
+    const [isAdmin] = useAdmin();
     return (
         <div className='flex'>
             <div className="w-64 min-h-screen bg-orange-400">
                 <ul className='menu'>
                     {
-                        admin ? <>
+                        isAdmin ? <>
                             <li><NavLink to="/dashboard/adminHome"><FaHome></FaHome> Admin Home Home</NavLink></li>
                             <li><NavLink to="/dashboard/addItems"><FaUtensils></FaUtensils>Add Items</NavLink></li>
                             <li><NavLink to="/dashboard/manageItems"><FaList></FaList>Manage Items</NavLink></li>
